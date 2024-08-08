@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+
+
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta-name = "viewport" content="width=device-width, initial-scale=1.0">
+<link rel="stylesheet" href="BidsTable.css">
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css'
+	rel='stylesheet'>
+<title>Forward Bid Item Display</title>
+<header>
+	<img src="logo1.jpg">
+</header>
+
+<body>
+	<div class="ForwardBidsTable">
+		<table id="ForwardBidsList" border="1">
+			<tr>
+				<th>Item Name</th>
+				<th>Item ID</th>
+				<th>Current Price</th>
+				<th>UserID</th>
+			</tr>
+			<!-- Rows will be dynamically added here -->
+		</table>
+	</div>
+
+	<button type="submit" class="btn">Bid</button>
+
+	<div id="countdown"></div>
+
+
+
+	<script>
+	//Set the date to counting down to
+	var countDownDate = new Date("Apr 30, 2024 00:00:00").getTime();
+	
+	// Update the countdown every second
+	var x = setInterval(function() {
+	
+	  // Get the current date and time
+	  var now = new Date().getTime();
+	  
+	  // Calculate the remaining time
+	  var distance = countDownDate - now;
+	  
+	  // Calculate days, hours, minutes, and seconds
+	  var days = Math.floor(distance / (1000 * 60 * 60 * 24));
+	  var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+	  var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+	  var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+	  
+	  // Display the countdown
+	  document.getElementById("countdown").innerHTML = days + "d " + hours + "h "
+	  + minutes + "m " + seconds + "s ";
+	  
+	  // If the countdown is finished, display a message
+	  if (distance < 0) {
+	    clearInterval(x);
+	    document.getElementById("countdown").innerHTML = "EXPIRED";
+	  }
+	}, 1000);
+</script>
+
+	<script>
+		$(document).ready(function(){
+		 $.ajax({
+		 url: "http://localhost:8080/BidHub/rest/forwardBids",
+		 type: 'GET',
+		 success: function(result){
+		 var table = $("#ForwardBidsTable");
+		 result.forEach(function(student){
+		 var row = $("<tr></tr>");
+		 row.append($("<td></td>").text(bid.itemName));
+		 row.append($("<td></td>").text(bid.itemID));
+		 row.append($("<td></td>").text(bid.amount));
+		 row.append($("<td></td>").text(bid.userID));
+		 table.append(row);
+		 });
+		 },
+		 error: function(error){
+		 console.log(result);
+		 }
+		 });
+		});
+</script>
+
+</body>
+</html>

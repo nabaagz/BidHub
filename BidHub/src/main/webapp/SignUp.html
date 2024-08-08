@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lan="en">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta-name = "viewport" content="width=device-width, initial-scale=1.0">
+<link rel="stylesheet" href="styles.css">
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css'
+	rel='stylesheet'>
+<title>Sign Up Page</title>
+<header>
+	<img src="logo1.jpg">
+</header>
+</head>
+<body>
+	<div class="wrapper">
+		<form  method="post" action="@{/signUp}">
+			<h1>Sign Up</h1>
+			<div class="input-box">
+				<input type="text" placeholder="Name" required id="name"
+					name="name">
+			</div>
+			<div class="input-box">
+				<input type="text" placeholder="Email" required id="Email"
+					name="Email">
+			</div>
+			<div class="input-box">
+				<input type="text" placeholder="Address" required
+					id="Address" name="Address">
+			</div>
+			<div class="input-box">
+				<input type="text" placeholder="Unit" required
+					id="Unit" name="Unit">
+			</div>
+			<div class="input-box">
+				<input type="text" placeholder="Postal Code" required
+					id="postalcode" name="postalcode">
+			</div>
+			<div class="input-box">
+				<input type="text" placeholder="City" required id="city" name="city">
+			</div>
+			<div class="input-box">
+				<input type="text" placeholder="Country" required id="country"
+					name="country">
+			</div>
+			<div class="input-box">
+				<input type="text" placeholder="Phone" required id="phone"
+					name="phone">
+			</div>
+			<div class="input-box">
+				<input type="text" placeholder="Username" required id="username"
+					name="username">
+			</div>
+			<button type="submit" class="btn">Sign Up</button>
+		</form>
+	</div>
+</body>
+</html>
